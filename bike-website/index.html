@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrailRide - Bike Rentals & Tours</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-bicycle"></i>
+                <span>TrailRide</span>
+            </a>
+            <button class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#rentals">Rentals</a></li>
+                <li><a href="#tours">Tours</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#locations">Locations</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#booking" class="btn btn-primary">Book Now</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="video-background">
+            <video autoplay muted loop playsinline poster="images/hero-poster.jpg">
+                <source src="https://videos.pexels.com/video-files/2887908/2887908-hd_1920_1080_25fps.mp4" type="video/mp4">
+            </video>
+            <div class="video-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <div class="container">
+                <h1 class="hero-title">Explore the Mountain Trail on Two Wheels</h1>
+                <p class="hero-subtitle">Premium bike rentals & guided tours for every adventurer</p>
+                
+                <!-- Weather Widget -->
+                <div class="weather-widget" id="weatherWidget">
+                    <div class="weather-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Main Station</span>
+                    </div>
+                    <div class="weather-info">
+                        <div class="weather-temp" id="weatherTemp">72°F</div>
+                        <div class="weather-condition" id="weatherCondition">
+                            <i class="fas fa-sun"></i>
+                            <span>Sunny</span>
+                        </div>
+                    </div>
+                    <div class="weather-details">
+                        <span><i class="fas fa-wind"></i> <span id="weatherWind">8 mph</span></span>
+                        <span><i class="fas fa-tint"></i> <span id="weatherHumidity">45%</span></span>
+                    </div>
+                </div>
+
+                <!-- Search Widget -->
+                <div class="search-widget">
+                    <div class="search-grid">
+                        <div class="search-field">
+                            <label><i class="fas fa-calendar-alt"></i> Pick-up Date</label>
+                            <input type="date" id="pickupDate" required>
+                        </div>
+                        <div class="search-field">
+                            <label><i class="fas fa-calendar-check"></i> Drop-off Date</label>
+                            <input type="date" id="dropoffDate" required>
+                        </div>
+                        <div class="search-field">
+                            <label><i class="fas fa-bicycle"></i> Bike Type</label>
+                            <select id="bikeType">
+                                <option value="">All Bikes</option>
+                                <option value="city">City Bike</option>
+                                <option value="mountain">Mountain Bike</option>
+                                <option value="ebike">E-Bike</option>
+                                <option value="tandem">Tandem</option>
+                                <option value="kids">Kids Bike</option>
+                                <option value="road">Premium Road Bike</option>
+                            </select>
+                        </div>
+                        <div class="search-field">
+                            <label><i class="fas fa-ruler-vertical"></i> Rider Height</label>
+                            <select id="riderHeight">
+                                <option value="">Select Height</option>
+                                <option value="xs">Under 5'0" (XS)</option>
+                                <option value="s">5'0" - 5'4" (S)</option>
+                                <option value="m">5'5" - 5'9" (M)</option>
+                                <option value="l">5'10" - 6'2" (L)</option>
+                                <option value="xl">Over 6'2" (XL)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="btn btn-search" id="searchBikes">
+                        <i class="fas fa-search"></i> Find Your Bike
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Rental Catalog -->
+    <section class="rentals" id="rentals">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Our Fleet</span>
+                <h2 class="section-title">Choose Your Ride</h2>
+                <p class="section-subtitle">From city cruisers to mountain shredders — we've got the perfect bike for your adventure</p>
+            </div>
+
+            <div class="bike-categories">
+                <!-- City Bikes -->
+                <div class="bike-card" data-category="city">
+                    <div class="bike-image">
+                        <img src="https://images.unsplash.com/photo-1485965120184-e220f721d03e?w=600&h=400&fit=crop" alt="City Bike">
+                        <div class="bike-badge">Popular</div>
+                    </div>
+                    <div class="bike-info">
+                        <h3>City Bikes</h3>
+                        <p>Comfortable upright riding position perfect for urban exploration and casual cruising.</p>
+                        <div class="bike-specs">
+                            <span><i class="fas fa-tachometer-alt"></i> 7-speed</span>
+                            <span><i class="fas fa-weight-hanging"></i> 14kg</span>
+                        </div>
+                        <div class="pricing-tabs">
+                            <button class="price-tab active" data-period="hourly">Hourly</button>
+                            <button class="price-tab" data-period="daily">Daily</button>
+                            <button class="price-tab" data-period="weekly">Weekly</button>
+                        </div>
+                        <div class="price-display">
+                            <span class="price-amount" data-hourly="$12" data-daily="$35" data-weekly="$180">$12</span>
+                            <span class="price-period">/hour</span>
+                        </div>
+                        <div class="includes">
+                            <span><i class="fas fa-hard-hat"></i> Helmet</span>
+                            <span><i class="fas fa-lock"></i> Lock</span>
+                            <span><i class="fas fa-map"></i> Map</span>
+                            <span class="insurance"><i class="fas fa-shield-alt"></i> Insurance <small>+$5</small></span>
+                        </div>
+                        <button class="btn btn-book" data-bike="city">Book Now</button>
+                    </div>
+                </div>
+
+                <!-- Mountain Bikes -->
+                <div class="bike-card" data-category="mountain">
+                    <div class="bike-image">
+                        <img src="https://images.unsplash.com/photo-1576435728678-68d0fbf94e91?w=600&h=400&fit=crop" alt="Mountain Bike">
+                        <div class="bike-badge">Adventure</div>
+                    </div>
+                    <div class="bike-info">
+                        <h3>Mountain Bikes</h3>
+                        <p>Full-suspension trail bikes built for rugged terrain and thrilling descents.</p>
+                        <div class="bike-specs">
+                            <span><i class="fas fa-tachometer-alt"></i> 27-speed</span>
+                            <span><i class="fas fa-weight-hanging"></i> 13kg</span>
+                        </div>
+                        <div class="pricing-tabs">
+                            <button class="price-tab active" data-period="hourly">Hourly</button>
+                            <button class="price-tab" data-period="daily">Daily</button>
+                            <button class="price-tab" data-period="weekly">Weekly</button>
+                        </div>
+                        <div class="price-display">
+                            <span class="price-amount" data-hourly="$18" data-daily="$55" data-weekly="$280">$18</span>
+                            <span class="price-period">/hour</span>
+                        </div>
+                        <div class="includes">
+                            <span><i class="fas fa-hard-hat"></i> Helmet</span>
+                            <span><i class="fas fa-lock"></i> Lock</span>
+                            <span><i class="fas fa-map"></i> Map</span>
+                            <span class="insurance"><i class="fas fa-shield-alt"></i> Insurance <small>+$8</small></span>
+                        </div>
+                        <button class="btn btn-book" data-bike="mountain">Book Now</button>
+                    </div>
+                </div>
+
+                <!-- E-Bikes -->
+                <div class="bike-card" data-category="ebike">
+                    <div class="bike-image">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&h=400&fit=crop" alt="E-Bike">
+                        <div class="bike-badge">Trending</div>
+                    </div>
+                    <div class="bike-info">
+                        <h3>E-Bikes</h3>
+                        <p>Electric-assist bikes that make hills disappear and long distances effortless.</p>
+                        <div class="bike-specs">
+                            <span><i class="fas fa-bolt"></i> 80km range</span>
+                            <span><i class="fas fa-weight-hanging"></i> 22kg</span>
+                        </div>
+                        <div class="pricing-tabs">
+                            <button class="price-tab active" data-period="hourly">Hourly</button>
+                            <button class="price-tab" data-period="daily">Daily</button>
+                            <button class="price-tab" data-period="weekly">Weekly</button>
+                        </div>
+                        <div class="price-display">
+                            <span class="price-amount" data-hourly="$25" data-daily="$75" data-weekly="$380">$25</span>
+                            <span class="price-period">/hour</span>
+                        </div>
+                        <div class="includes">
+                            <span><i class="fas fa-hard-hat"></i> Helmet</span>
+                            <span><i class="fas fa-lock"></i> Lock</span>
+                            <span><i class="fas fa-map"></i> Map</span>
+                            <span class="insurance"><i class="fas fa-shield-alt"></i> Insurance <small>+$10</small></span>
+                        </div>
+                        <button class="btn btn-book" data-bike="ebike">Book Now</button>
+                    </div>
+                </div>
+
+                <!-- Tandems -->
+                <div class="bike-card" data-category="tandem">
+                    <div class="bike-image">
+                        <img src="https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?w=600&h=400&fit=crop" alt="Tandem Bike">
+                    </div>
+                    <div class="bike-info">
+                        <h3>Tandems</h3>
+                        <p>Double the fun with our premium tandem bikes — perfect for couples and friends.</p>
+                        <div class="bike-specs">
+                            <span><i class="fas fa-users"></i> 2 riders</span>
+                            <span><i class="fas fa-weight-hanging"></i> 18kg</span>
+                        </div>
+                        <div class="pricing-tabs">
+                            <button class="price-tab active" data-period="hourly">Hourly</button>
+                            <button class="price-tab" data-period="daily">Daily</button>
+                            <button class="price-tab" data-period="weekly">Weekly</button>
+                        </div>
+                        <div class="price-display">
+                            <span class="price-amount" data-hourly="$22" data-daily="$65" data-weekly="$320">$22</span>
+                            <span class="price-period">/hour</span>
+                        </div>
+                        <div class="includes">
+                            <span><i class="fas fa-hard-hat"></i> 2 Helmets</span>
+                            <span><i class="fas fa-lock"></i> Lock</span>
+                            <span><i class="fas fa-map"></i> Map</span>
+                            <span class="insurance"><i class="fas fa-shield-alt"></i> Insurance <small>+$8</small></span>
+                        </div>
+                        <button class="btn btn-book" data-bike="tandem">Book Now</button>
+                    </div>
+                </div>
+
+                <!-- Kids Bikes -->
+                <div class="bike-card" data-category="kids">
+                    <div class="bike-image">
+                        <img src="https://images.unsplash.com/photo-1571068316344-75bc76f77890?w=600&h=400&fit=crop" alt="Kids Bike">
+                    </div>
+                    <div class="bike-info">
+                        <h3>Kids Bikes</h3>
+                        <p>Safe, lightweight bikes in multiple sizes for young riders aged 4-12.</p>
+                        <div class="bike-specs">
+                            <span><i class="fas fa-child"></i> Ages 4-12</span>
+                            <span><i class="fas fa-weight-hanging"></i> 8kg</span>
+                        </div>
+                        <div class="pricing-tabs">
+                            <button class="price-tab active" data-period="hourly">Hourly</button>
+                            <button class="price-tab" data-period="daily">Daily</button>
+                            <button class="price-tab" data-period="weekly">Weekly</button>
+                        </div>
+                        <div class="price-display">
+                            <span class="price-amount" data-hourly="$8" data-daily="$22" data-weekly="$110">$8</span>
+                            <span class="price-period">/hour</span>
+                        </div>
+                        <div class="includes">
+                            <span><i class="fas fa-hard-hat"></i> Helmet</span>
+                            <span><i class="fas fa-lock"></i> Lock</span>
+                            <span><i class="fas fa-map"></i> Map</span>
+                            <span class="insurance"><i class="fas fa-shield-alt"></i> Insurance <small>+$3</small></span>
+                        </div>
+                        <button class="btn btn-book" data-bike="kids">Book Now</button>
+                    </div>
+                </div>
+
+                <!-- Premium Road Bikes -->
+                <div class="bike-card" data-category="road">
+                    <div class="bike-image">
+                        <img src="https://images.unsplash.com/photo-1511994298241-608e28f14fde?w=600&h=400&fit=crop" alt="Road Bike">
+                        <div class="bike-badge">Premium</div>
+                    </div>
+                    <div class="bike-info">
+                        <h3>Premium Road Bikes</h3>
+                        <p>Carbon fiber racing machines for serious cyclists seeking speed and performance.</p>
+                        <div class="bike-specs">
+                            <span><i class="fas fa-tachometer-alt"></i> 22-speed</span>
+                            <span><i class="fas fa-weight-hanging"></i> 7.5kg</span>
+                        </div>
+                        <div class="pricing-tabs">
+                            <button class="price-tab active" data-period="hourly">Hourly</button>
+                            <button class="price-tab" data-period="daily">Daily</button>
+                            <button class="price-tab" data-period="weekly">Weekly</button>
+                        </div>
+                        <div class="price-display">
+                            <span class="price-amount" data-hourly="$35" data-daily="$95" data-weekly="$450">$35</span>
+                            <span class="price-period">/hour</span>
+                        </div>
+                        <div class="includes">
+                            <span><i class="fas fa-hard-hat"></i> Helmet</span>
+                            <span><i class="fas fa-lock"></i> Lock</span>
+                            <span><i class="fas fa-map"></i> Map</span>
+                            <span class="insurance"><i class="fas fa-shield-alt"></i> Insurance <small>+$15</small></span>
+                        </div>
+                        <button class="btn btn-book" data-bike="road">Book Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tours & Experiences -->
+    <section class="tours" id="tours">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Guided Adventures</span>
+                <h2 class="section-title">Tours & Experiences</h2>
+                <p class="section-subtitle">Discover hidden gems and breathtaking views with our expert local guides</p>
+            </div>
+
+            <div class="tours-grid">
+                <!-- Tour 1 -->
+                <div class="tour-card">
+                    <div class="tour-gallery">
+                        <div class="gallery-main">
+                            <img src="https://images.unsplash.com/photo-1544191696-102a3c3a7f6e?w=800&h=500&fit=crop" alt="Coastal Cruise Tour">
+                        </div>
+                        <div class="gallery-thumbs">
+                            <img src="https://images.unsplash.com/photo-1544191696-102a3c3a7f6e?w=200&h=130&fit=crop" class="active" data-full="https://images.unsplash.com/photo-1544191696-102a3c3a7f6e?w=800&h=500&fit=crop">
+                            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=200&h=130&fit=crop" data-full="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=500&fit=crop">
+                            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=200&h=130&fit=crop" data-full="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=800&h=500&fit=crop">
+                        </div>
+                    </div>
+                    <div class="tour-details">
+                        <div class="tour-header">
+                            <h3>Coastal Sunset Cruise</h3>
+                            <div class="difficulty easy">
+                                <i class="fas fa-signal"></i> Easy
+                            </div>
+                        </div>
+                        <div class="tour-stats">
+                            <span><i class="fas fa-clock"></i> 3 hours</span>
+                            <span><i class="fas fa-route"></i> 15 miles</span>
+                            <span><i class="fas fa-mountain"></i> 200 ft</span>
+                        </div>
+                        <p class="tour-description">Ride along scenic coastal paths as the sun sets over the ocean. Perfect for beginners and photography enthusiasts.</p>
+                        <div class="tour-guide">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" alt="Guide Mike">
+                            <div class="guide-info">
+                                <span class="guide-name">Mike Thompson</span>
+                                <span class="guide-lang"><i class="fas fa-language"></i> EN, ES</span>
+                            </div>
+                        </div>
+                        <div class="tour-pricing">
+                            <div class="price-option">
+                                <span class="price-label">Group Tour</span>
+                                <span class="price-value">$45/person</span>
+                            </div>
+                            <div class="price-option">
+                                <span class="price-label">Private Tour</span>
+                                <span class="price-value">$120</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-book-tour" data-tour="coastal">Book This Tour</button>
+                    </div>
+                </div>
+
+                <!-- Tour 2 -->
+                <div class="tour-card">
+                    <div class="tour-gallery">
+                        <div class="gallery-main">
+                            <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&h=500&fit=crop" alt="Forest Trail Tour">
+                        </div>
+                        <div class="gallery-thumbs">
+                            <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=200&h=130&fit=crop" class="active" data-full="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&h=500&fit=crop">
+                            <img src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?w=200&h=130&fit=crop" data-full="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?w=800&h=500&fit=crop">
+                            <img src="https://images.unsplash.com/photo-1425913397330-cf8af2ff40a1?w=200&h=130&fit=crop" data-full="https://images.unsplash.com/photo-1425913397330-cf8af2ff40a1?w=800&h=500&fit=crop">
+                        </div>
+                    </div>
+                    <div class="tour-details">
+                        <div class="tour-header">
+                            <h3>Forest Trail Explorer</h3>
+                            <div class="difficulty moderate">
+                                <i class="fas fa-signal"></i> Moderate
+                            </div>
+                        </div>
+                        <div class="tour-stats">
+                            <span><i class="fas fa-clock"></i> 4 hours</span>
+                            <span><i class="fas fa-route"></i> 22 miles</span>
+                            <span><i class="fas fa-mountain"></i> 800 ft</span>
+                        </div>
+                        <p class="tour-description">Wind through ancient redwood forests and discover hidden waterfalls on this intermediate trail adventure.</p>
+                        <div class="tour-guide">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face" alt="Guide Sarah">
+                            <div class="guide-info">
+                                <span class="guide-name">Sarah Chen</span>
+                                <span class="guide-lang"><i class="fas fa-language"></i> EN, FR, JP</span>
+                            </div>
+                        </div>
+                        <div class="tour-pricing">
+                            <div class="price-option">
+                                <span class="price-label">Group Tour</span>
+                                <span class="price-value">$65/person</span>
+                            </div>
+                            <div class="price-option">
+                                <span class="price-label">Private Tour</span>
+                                <span class="price-value">$180</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-book-tour" data-tour="forest">Book This Tour</button>
+                    </div>
+                </div>
+
+                <!-- Tour 3 -->
+                <div class="tour-card">
+                    <div class="tour-gallery">
+                        <div class="gallery-main">
+                            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&h=500&fit=crop" alt="Mountain Challenge Tour">
+                        </div>
+                        <div class="gallery-thumbs">
+                            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=200&h=130&fit=crop" class="active" data-full="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&h=500&fit=crop">
+                            <img src="https://images.unsplash.com/photo-1454496522488-7a8e488e8606?w=200&h=130&fit=crop" data-full="https://images.unsplash.com/photo-1454496522488-7a8e488e8606?w=800&h=500&fit=crop">
+                            <img src="https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?w=200&h=130&fit=crop" data-full="https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?w=800&h=500&fit=crop">
+                        </div>
+                    </div>
+                    <div class="tour-details">
+                        <div class="tour-header">
+                            <h3>Mountain Summit Challenge</h3>
+                            <div class="difficulty hard">
+                                <i class="fas fa-signal"></i> Advanced
+                            </div>
+                        </div>
+                        <div class="tour-stats">
+                            <span><i class="fas fa-clock"></i> 6 hours</span>
+                            <span><i class="fas fa-route"></i> 35 miles</span>
+                            <span><i class="fas fa-mountain"></i> 2,400 ft</span>
+                        </div>
+                        <p class="tour-description">Conquer the peak on this demanding ride with rewarding 360° panoramic views. For experienced riders only.</p>
+                        <div class="tour-guide">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face" alt="Guide Alex">
+                            <div class="guide-info">
+                                <span class="guide-name">Alex Rivera</span>
+                                <span class="guide-lang"><i class="fas fa-language"></i> EN, ES, DE</span>
+                            </div>
+                        </div>
+                        <div class="tour-pricing">
+                            <div class="price-option">
+                                <span class="price-label">Group Tour</span>
+                                <span class="price-value">$95/person</span>
+                            </div>
+                            <div class="price-option">
+                                <span class="price-label">Private Tour</span>
+                                <span class="price-value">$250</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-book-tour" data-tour="mountain">Book This Tour</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Instagram Feed -->
+            <div class="instagram-section">
+                <h3><i class="fab fa-instagram"></i> #TrailRideAdventures</h3>
+                <div class="instagram-grid">
+                    <div class="insta-post"><img src="https://images.unsplash.com/photo-1541625602330-2277a4c46182?w=300&h=300&fit=crop" alt="Customer photo"></div>
+                    <div class="insta-post"><img src="https://images.unsplash.com/photo-1559348349-86f1f65817fe?w=300&h=300&fit=crop" alt="Customer photo"></div>
+                    <div class="insta-post"><img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?w=300&h=300&fit=crop" alt="Customer photo"></div>
+                    <div class="insta-post"><img src="https://images.unsplash.com/photo-1534787238916-9ba6764efd4f?w=300&h=300&fit=crop" alt="Customer photo"></div>
+                    <div class="insta-post"><img src="https://images.unsplash.com/photo-1571333250630-f0230c320b6d?w=300&h=300&fit=crop" alt="Customer photo"></div>
+                    <div class="insta-post"><img src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=300&h=300&fit=crop" alt="Customer photo"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Engine -->
+    <section class="booking" id="booking">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Quick & Easy</span>
+                <h2 class="section-title">Book Your Adventure</h2>
+                <p class="section-subtitle">Real-time availability with instant confirmation</p>
+            </div>
+
+            <div class="booking-engine">
+                <!-- Step 1: Selection -->
+                <div class="booking-step active" id="step1">
+                    <div class="step-number">1</div>
+                    <h3>Select Your Ride</h3>
+                    <div class="booking-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Bike Type</label>
+                                <select id="bookBikeType">
+                                    <option value="">Choose a bike...</option>
+                                    <option value="city">City Bike - $12/hr</option>
+                                    <option value="mountain">Mountain Bike - $18/hr</option>
+                                    <option value="ebike">E-Bike - $25/hr</option>
+                                    <option value="tandem">Tandem - $22/hr</option>
+                                    <option value="kids">Kids Bike - $8/hr</option>
+                                    <option value="road">Premium Road Bike - $35/hr</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Rental Period</label>
+                                <select id="bookPeriod">
+                                    <option value="hourly">Hourly</option>
+                                    <option value="daily">Daily</option>
+                                    <option value="weekly">Weekly</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Pick-up Date & Time</label>
+                                <input type="datetime-local" id="bookPickup">
+                            </div>
+                            <div class="form-group">
+                                <label>Drop-off Date & Time</label>
+                                <input type="datetime-local" id="bookDropoff">
+                            </div>
+                        </div>
+                        <div class="availability-check">
+                            <button class="btn btn-check" id="checkAvailability">
+                                <i class="fas fa-search"></i> Check Availability
+                            </button>
+                            <div class="availability-status" id="availabilityStatus"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Upsells -->
+                <div class="booking-step" id="step2">
+                    <div class="step-number">2</div>
+                    <h3>Enhance Your Ride</h3>
+                    <div class="upsells">
+                        <div class="upsell-item" data-price="15">
+                            <div class="upsell-icon"><i class="fas fa-map-marked-alt"></i></div>
+                            <div class="upsell-info">
+                                <h4>GPS Navigation Device</h4>
+                                <p>Pre-loaded with scenic routes and trail maps</p>
+                                <span class="upsell-price">+$15</span>
+                            </div>
+                            <label class="toggle">
+                                <input type="checkbox" class="upsell-check">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="upsell-item" data-price="25">
+                            <div class="upsell-icon"><i class="fas fa-video"></i></div>
+                            <div class="upsell-info">
+                                <h4>GoPro Hero Rental</h4>
+                                <p>Capture your adventure in 4K with mounts included</p>
+                                <span class="upsell-price">+$25</span>
+                            </div>
+                            <label class="toggle">
+                                <input type="checkbox" class="upsell-check">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="upsell-item" data-price="12">
+                            <div class="upsell-icon"><i class="fas fa-utensils"></i></div>
+                            <div class="upsell-info">
+                                <h4>Adventure Snack Pack</h4>
+                                <p>Energy bars, fruits, water, and local treats</p>
+                                <span class="upsell-price">+$12</span>
+                            </div>
+                            <label class="toggle">
+                                <input type="checkbox" class="upsell-check">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="upsell-item" data-price="8" id="insuranceUpsell">
+                            <div class="upsell-icon"><i class="fas fa-shield-alt"></i></div>
+                            <div class="upsell-info">
+                                <h4>Full Coverage Insurance</h4>
+                                <p>Peace of mind — covers damage, theft, and liability</p>
+                                <span class="upsell-price">+$8</span>
+                            </div>
+                            <label class="toggle">
+                                <input type="checkbox" class="upsell-check">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="booking-total">
+                        <div class="total-row">
+                            <span>Base Rental</span>
+                            <span id="basePrice">$0</span>
+                        </div>
+                        <div class="total-row">
+                            <span>Add-ons</span>
+                            <span id="addonPrice">$0</span>
+                        </div>
+                        <div class="total-row total-final">
+                            <span>Total</span>
+                            <span id="totalPrice">$0</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-next" id="toStep3">Continue to Details</button>
+                </div>
+
+                <!-- Step 3: Details & Waiver -->
+                <div class="booking-step" id="step3">
+                    <div class="step-number">3</div>
+                    <h3>Your Details</h3>
+                    <div class="booking-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>First Name</label>
+                                <input type="text" id="firstName" placeholder="John">
+                            </div>
+                            <div class="form-group">
+                                <label>Last Name</label>
+                                <input type="text" id="lastName" placeholder="Doe">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" id="email" placeholder="john@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label>Phone</label>
+                                <input type="tel" id="phone" placeholder="+1 (555) 000-0000">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Emergency Contact</label>
+                            <input type="text" id="emergency" placeholder="Name & Phone">
+                        </div>
+                    </div>
+
+                    <div class="waiver-section">
+                        <h4><i class="fas fa-file-signature"></i> Digital Waiver</h4>
+                        <div class="waiver-text">
+                            <p>I acknowledge that cycling involves inherent risks including but not limited to personal injury, property damage, and death. I assume full responsibility for my participation and agree to follow all safety guidelines provided by TrailRide staff.</p>
+                            <p>I confirm that I am physically fit to participate in cycling activities and have no medical conditions that would prevent safe riding.</p>
+                        </div>
+                        <div class="waiver-signature">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="waiverAgree">
+                                <span>I agree to the terms and conditions</span>
+                            </label>
+                        </div>
+                        <div class="id-upload">
+                            <label>Upload ID (Driver's License or Passport)</label>
+                            <div class="upload-zone" id="uploadZone">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <span>Drag & drop or click to upload</span>
+                                <input type="file" id="idUpload" accept="image/*,.pdf">
+                            </div>
+                            <div class="upload-preview" id="uploadPreview"></div>
+                        </div>
+                    </div>
+                    <button class="btn btn-confirm" id="confirmBooking">Confirm Booking</button>
+                </div>
+
+                <!-- Step 4: Confirmation -->
+                <div class="booking-step" id="step4">
+                    <div class="confirmation">
+                        <div class="confirmation-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h3>Booking Confirmed!</h3>
+                        <p class="confirmation-message">Your adventure is booked. Show this QR code at pickup.</p>
+                        <div class="qr-code" id="qrCode">
+                            <!-- QR code generated via JS -->
+                        </div>
+                        <div class="confirmation-details" id="confirmationDetails"></div>
+                        <div class="confirmation-actions">
+                            <button class="btn btn-outline" onclick="window.print()">
+                                <i class="fas fa-print"></i> Print
+                            </button>
+                            <button class="btn btn-primary" id="newBooking">
+                                <i class="fas fa-plus"></i> New Booking
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Simple Process</span>
+                <h2 class="section-title">How It Works</h2>
+            </div>
+            <div class="timeline">
+                <div class="timeline-step">
+                    <div class="timeline-icon">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <h3>Book Online</h3>
+                    <p>Choose your bike, dates, and extras in just a few clicks</p>
+                </div>
+                <div class="timeline-arrow"><i class="fas fa-arrow-right"></i></div>
+                <div class="timeline-step">
+                    <div class="timeline-icon">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <h3>Pick Up</h3>
+                    <p>Visit our station, scan your QR code, and get fitted</p>
+                </div>
+                <div class="timeline-arrow"><i class="fas fa-arrow-right"></i></div>
+                <div class="timeline-step">
+                    <div class="timeline-icon">
+                        <i class="fas fa-bicycle"></i>
+                    </div>
+                    <h3>Ride</h3>
+                    <p>Explore the trails and create unforgettable memories</p>
+                </div>
+                <div class="timeline-arrow"><i class="fas fa-arrow-right"></i></div>
+                <div class="timeline-step">
+                    <div class="timeline-icon">
+                        <i class="fas fa-undo"></i>
+                    </div>
+                    <h3>Return</h3>
+                    <p>Drop off at any station before closing time</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Locations -->
+    <section class="locations" id="locations">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Find Us</span>
+                <h2 class="section-title">Rental Stations</h2>
+            </div>
+            <div class="locations-grid">
+                <div class="location-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.2!2d-73.98!3d40.75!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQ1JzAwLjAiTiA3M8KwNTgnNDguMCJX!5e0!3m2!1sen!2sus!4v1" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+                <div class="location-list">
+                    <div class="location-card active">
+                        <div class="location-marker"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="location-info">
+                            <h4>Main Station - Downtown</h4>
+                            <p>123 Bike Lane, City Center</p>
+                            <div class="location-hours">
+                                <span><i class="fas fa-clock"></i> 7:00 AM - 9:00 PM</span>
+                                <span class="status open">Open Now</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="location-card">
+                        <div class="location-marker"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="location-info">
+                            <h4>Parkside Hub</h4>
+                            <p>456 Trail Head Rd, North Park</p>
+                            <div class="location-hours">
+                                <span><i class="fas fa-clock"></i> 8:00 AM - 7:00 PM</span>
+                                <span class="status open">Open Now</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="location-card">
+                        <div class="location-marker"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="location-info">
+                            <h4>Beachfront Station</h4>
+                            <p>789 Ocean Drive, Boardwalk</p>
+                            <div class="location-hours">
+                                <span><i class="fas fa-clock"></i> 6:00 AM - 10:00 PM</span>
+                                <span class="status open">Open Now</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="location-card">
+                        <div class="location-marker"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="location-info">
+                            <h4>Mountain Base Camp</h4>
+                            <p>321 Summit Way, Mountain Valley</p>
+                            <div class="location-hours">
+                                <span><i class="fas fa-clock"></i> 7:00 AM - 6:00 PM</span>
+                                <span class="status closed">Closed</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Policy Info -->
+            <div class="policy-info">
+                <div class="policy-card">
+                    <i class="fas fa-clock"></i>
+                    <h4>Late Return Policy</h4>
+                    <p>Returns after closing incur next-day charges. Grace period: 30 minutes.</p>
+                </div>
+                <div class="policy-card">
+                    <i class="fas fa-exchange-alt"></i>
+                    <h4>Multi-Station Return</h4>
+                    <p>Pick up at one station and return to any other for no extra fee.</p>
+                </div>
+                <div class="policy-card">
+                    <i class="fas fa-cloud-rain"></i>
+                    <h4>Weather Guarantee</h4>
+                    <p>Free cancellation or reschedule if severe weather occurs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews -->
+    <section class="reviews" id="reviews">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Testimonials</span>
+                <h2 class="section-title">What Riders Say</h2>
+            </div>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="review-text">"The e-bike made the mountain trail so accessible! Our guide Mike was knowledgeable and fun. Best vacation activity we've done."</p>
+                    <div class="reviewer">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face" alt="Reviewer">
+                        <div>
+                            <span class="reviewer-name">Emily Roberts</span>
+                            <span class="reviewer-source"><i class="fab fa-tripadvisor"></i> TripAdvisor</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card featured">
+                    <div class="review-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="review-text">"As a serious cyclist, I was impressed by the quality of the premium road bikes. Carbon frame, Di2 shifting — these are race-ready machines. The coastal route recommendations were spot on."</p>
+                    <div class="reviewer">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face" alt="Reviewer">
+                        <div>
+                            <span class="reviewer-name">David Kim</span>
+                            <span class="reviewer-source"><i class="fab fa-google"></i> Google Reviews</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="review-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p class="review-text">"Booked a tandem for our anniversary. Super easy process, the bike was in perfect condition, and the sunset tour was magical. Highly recommend!"</p>
+                    <div class="reviewer">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=80&h=80&fit=crop&crop=face" alt="Reviewer">
+                        <div>
+                            <span class="reviewer-name">Sarah & Tom Miller</span>
+                            <span class="reviewer-source"><i class="fab fa-tripadvisor"></i> TripAdvisor</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blog / Ride Stories -->
+            <div class="blog-section">
+                <h3>Ride Stories</h3>
+                <div class="blog-grid">
+                    <article class="blog-card">
+                        <img src="https://images.unsplash.com/photo-1506197061617-7f5c0b093236?w=400&h=250&fit=crop" alt="Blog post">
+                        <div class="blog-content">
+                            <span class="blog-date">March 15, 2026</span>
+                            <h4>Conquering the Summit: A First-Timer's Guide</h4>
+                            <p>Everything you need to know before tackling your first mountain bike trail...</p>
+                            <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                    <article class="blog-card">
+                        <img src="https://images.unsplash.com/photo-1558618047-f4b511d0e435?w=400&h=250&fit=crop" alt="Blog post">
+                        <div class="blog-content">
+                            <span class="blog-date">March 8, 2026</span>
+                            <h4>Hidden Coastal Routes Only Locals Know</h4>
+                            <p>Discover secret beaches and cliffside viewpoints along our favorite paths...</p>
+                            <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                    <article class="blog-card">
+                        <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?w=400&h=250&fit=crop" alt="Blog post">
+                        <div class="blog-content">
+                            <span class="blog-date">February 28, 2026</span>
+                            <h4>Family Cycling: Tips for Riding with Kids</h4>
+                            <p>How to make your family bike adventure safe, fun, and memorable...</p>
+                            <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photo Contest -->
+    <section class="photo-contest">
+        <div class="container">
+            <div class="contest-banner">
+                <div class="contest-info">
+                    <h3><i class="fas fa-camera"></i> Photo Contest</h3>
+                    <p>Share your ride photos with <strong>#TrailRideAdventures</strong> for a chance to win a free weekend rental!</p>
+                </div>
+                <div class="contest-gallery">
+                    <img src="https://images.unsplash.com/photo-1541625602330-2277a4c46182?w=250&h=250&fit=crop" alt="Contest entry">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=250&h=250&fit=crop" alt="Contest entry">
+                    <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?w=250&h=250&fit=crop" alt="Contest entry">
+                    <img src="https://images.unsplash.com/photo-1534787238916-9ba6764efd4f?w=250&h=250&fit=crop" alt="Contest entry">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Questions</span>
+                <h2 class="section-title">Frequently Asked</h2>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>What if it rains during my rental?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>We offer free rescheduling or cancellation if there's severe weather. Light rain? We provide free ponchos and many riders love the trails in misty conditions! If you choose to return early due to rain, we'll prorate your rental.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>What happens if I get a flat tire?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Every rental includes a puncture repair kit and pump. If you can't fix it, call our support line — we'll dispatch assistance or direct you to the nearest station for a bike swap at no charge.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Do I need to reserve in advance?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Walk-ins are welcome, but we strongly recommend booking ahead especially on weekends and holidays. Our premium road bikes and e-bikes often sell out 2-3 days in advance.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>What's the minimum age to rent?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Riders must be 18+ to rent independently. Teens 16-17 can rent with a parent/guardian present. We have kids' bikes suitable for ages 4+ which must be rented by an adult.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Can I return my bike to a different location?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes! We offer free multi-station returns. Just let us know at pickup if you plan to return elsewhere so we can coordinate our fleet.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Is insurance included?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Basic liability is included. Full coverage insurance (damage, theft, medical) is available as an add-on starting at $3/day depending on bike type. We highly recommend it for premium bikes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        <i class="fas fa-bicycle"></i>
+                        <span>TrailRide</span>
+                    </a>
+                    <p>Your gateway to two-wheeled adventures. Quality bikes, expert guides, unforgettable experiences.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#rentals">Bike Rentals</a></li>
+                        <li><a href="#tours">Guided Tours</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="#locations">Locations</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#">Cancellation Policy</a></li>
+                        <li><a href="#">Safety Guidelines</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <p><i class="fas fa-phone"></i> (555) 123-RIDE</p>
+                    <p><i class="fas fa-envelope"></i> hello@trailride.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Bike Lane, City Center</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 TrailRide. All rights reserved.</p>
+                <div class="payment-methods">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-cc-amex"></i>
+                    <i class="fab fa-cc-apple-pay"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
