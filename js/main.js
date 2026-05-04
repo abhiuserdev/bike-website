@@ -621,5 +621,288 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // ========================================
+    // CHAT WIDGET
+    // ========================================
+    const chatToggle = document.getElementById('chatToggle');
+    const chatClose = document.getElementById('chatClose');
+    const chatPanel = document.getElementById('chatPanel');
+    const chatInput = document.getElementById('chatInput');
+    const chatSend = document.getElementById('chatSend');
+    const chatMessages = document.getElementById('chatMessages');
+    const chatBadge = document.getElementById('chatBadge');
+    const quickReplies = document.querySelectorAll('.quick-reply');
+
+    let chatOpen = false;
+    let badgeCount = 1;
+
+    function toggleChat() {
+        chatOpen = !chatOpen;
+        chatPanel.classList.toggle('active', chatOpen);
+        
+        if (chatOpen) {
+            chatBadge.style.display = 'none';
+            badgeCount = 0;
+            chatInput.focus();
+        }
+    }
+
+    if (chatToggle) chatToggle.addEventListener('click', toggleChat);
+    if (chatClose) chatClose.addEventListener('click', toggleChat);
+
+    // Quick reply buttons
+    quickReplies.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const question = btn.dataset.question;
+            sendUserMessage(question);
+            generateBotReply(question);
+        });
+    });
+
+    // Send on button click
+    if (chatSend) {
+        chatSend.addEventListener('click', () => {
+            const text = chatInput.value.trim();
+            if (text) {
+                sendUserMessage(text);
+                generateBotReply(text);
+                chatInput.value = '';
+            }
+        });
+    }
+
+    // Send on Enter key
+    if (chatInput) {
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                const text = chatInput.value.trim();
+                if (text) {
+                    sendUserMessage(text);
+                    generateBotReply(text);
+                    chatInput.value = '';
+                }
+            }
+        });
+    }
+
+    function sendUserMessage(text) {
+        const msg = document.createElement('div');
+        msg.className = 'chat-message user';
+        msg.innerHTML = `
+            <div class="chat-bubble">
+                <p>${escapeHtml(text)}</p>
+            </div>
+            <span class="chat-time">${formatTime()}</span>
+        `;
+        chatMessages.appendChild(msg);
+        scrollToBottom();
+    }
+
+    function showTypingIndicator() {
+        const typing = document.createElement('div');
+        typing.className = 'chat-message bot typing';
+        typing.id = 'typingIndicator';
+        typing.innerHTML = `
+            <div class="typing-indicator">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        `;
+        chatMessages.appendChild(typing);
+        scrollToBottom();
+    }
+
+    function removeTypingIndicator() {
+        const typing = document.getElementById('typingIndicator');
+        if (typing) typing.remove();
+    }
+
+    function sendBotMessage(text) {
+        const msg = document.createElement('div');
+        msg.className = 'chat-message bot';
+        msg.innerHTML = `
+            <div class="chat-bubble">
+                <p>${text}</p>
+            </div>
+            <span class="chat-time">${formatTime()}</span>
+        `;
+        chatMessages.appendChild(msg);
+        scrollToBottom();
+    }
+
+    function scrollToBottom() {
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
+    function formatTime() {
+        const now = new Date();
+        return now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+    }
+
+    // Bot reply logic
+    const botResponses = {
+        'bike': `We have 6 types of bikes available:
+• <strong>City Bikes</strong> – Comfortable cruisers for urban exploring ($12/hr)
+• <strong>Mountain Bikes</strong> – Full-suspension trail bikes ($18/hr)
+• <strong>E-Bikes</strong> – Electric assist, up to 80km range ($25/hr)
+• <strong>Tandems</strong> – Perfect for couples ($22/hr)
+• <strong>Kids Bikes</strong> – Ages 4-12, multiple sizes ($8/hr)
+• <strong>Premium Road Bikes</strong> – Carbon fiber racing machines ($35/hr)
+
+All rentals include a helmet, lock, and route map. Want help picking one?`,
+
+        'cost': `Our pricing is flexible based on how long you ride:
+
+<strong>City Bikes:</strong> $12/hr | $35/day | $180/week
+<strong>Mountain Bikes:</strong> $18/hr | $55/day | $280/week
+<strong>E-Bikes:</strong> $25/hr | $75/day | $380/week
+<strong>Tandems:</strong> $22/hr | $65/day | $320/week
+<strong>Kids Bikes:</strong> $8/hr | $22/day | $110/week
+<strong>Road Bikes:</strong> $35/hr | $95/day | $450/week
+
+We also offer add-ons like GPS ($15), GoPro rental ($25), snack packs ($12), and full insurance. Check our booking section for exact totals!`,
+
+        'book': `You can book right here on our website! No reservation is required for walk-ins, but we <strong>strongly recommend booking ahead</strong> — especially on weekends and holidays.
+
+Our premium road bikes and e-bikes often sell out 2-3 days in advance. You can check real-time availability in our booking engine above. Want me to scroll you there?`,
+
+        'advance': `Walk-ins are welcome, but we <strong>strongly recommend booking ahead</strong> — especially on weekends and holidays. Our premium road bikes and e-bikes often sell out 2-3 days in advance. You can check real-time availability in our booking engine!`,
+
+        'hour': `Our hours vary by location:
+
+<strong>Downtown Main Station:</strong> 7:00 AM – 9:00 PM
+<strong>Parkside Hub:</strong> 8:00 AM – 7:00 PM
+<strong>Beachfront Station:</strong> 6:00 AM – 10:00 PM
+<strong>Mountain Base Camp:</strong> 7:00 AM – 6:00 PM
+
+You can check the exact status of each location on our map above — it shows whether they're currently open or closed.`,
+
+        'tour': `Yes! We offer 3 amazing guided tours:
+
+🌅 <strong>Coastal Sunset Cruise</strong> (Easy, 3 hrs, 15 mi) – $45/person
+🌲 <strong>Forest Trail Explorer</strong> (Moderate, 4 hrs, 22 mi) – $65/person
+⛰️ <strong>Mountain Summit Challenge</strong> (Advanced, 6 hrs, 35 mi) – $95/person
+
+Private tours are also available! All tours include an expert guide, bike rental, and refreshments.`,
+
+        'rain': `Great question! We have a flexible weather policy:
+
+🌧️ <strong>Free rescheduling or cancellation</strong> if severe weather is forecasted
+🧥 We provide <strong>free ponchos</strong> for light rain
+🚴 Many riders actually love the trails in misty conditions — fewer crowds and everything looks magical!
+
+If you return early due to rain, we'll <strong>prorate your rental</strong>. Your adventure shouldn't be ruined by a little water!`,
+
+        'insurance': `Basic liability coverage is included with every rental. For extra peace of mind, we offer <strong>Full Coverage Insurance</strong> as an add-on:
+
+• Covers damage, theft, and liability
+• Prices vary by bike type ($3–$15)
+• <strong>Highly recommended</strong> for premium road bikes
+
+You can add it during the booking flow!`,
+
+        'helmet': `Yes! A helmet is <strong>included free</strong> with every rental. We have helmets in all sizes from toddler to XL adult. Our staff will help you get a proper fit during pickup.
+
+Safety first — helmets are required for all riders under 18 and strongly recommended for everyone!`,
+
+        'age': `Our age requirements:
+
+• <strong>18+</strong> to rent independently
+• <strong>16–17</strong> can rent with a parent/guardian present
+• <strong>Kids bikes</strong> available for ages 4+, rented by an adult
+• Tandems are great for riding with younger children who aren't ready to pedal alone!
+
+We have bikes and helmets in all sizes, so the whole family can ride together.`,
+
+        'location': `We have 4 convenient rental stations:
+
+📍 <strong>Main Station – Downtown</strong> (123 Bike Lane)
+📍 <strong>Parkside Hub</strong> (456 Trail Head Rd)
+📍 <strong>Beachfront Station</strong> (789 Ocean Drive)
+📍 <strong>Mountain Base Camp</strong> (321 Summit Way)
+
+You can pick up at one station and return to <strong>any other for free</strong>! Check our interactive map above for exact locations and current hours.`,
+
+        'return': `You can return your bike to <strong>any of our 4 stations</strong> at no extra charge — just let us know at pickup if you plan to return elsewhere.
+
+We have a 30-minute grace period, but returns after closing time incur next-day charges. All stations have secure after-hours drop boxes if you have an early flight!`,
+
+        'flat': `Don't worry — we've got you covered! Every rental includes:
+
+🔧 A <strong>puncture repair kit</strong> and pump
+📞 24/7 support line — we'll dispatch help or direct you to the nearest station for a <strong>free bike swap</strong>
+
+Most flats take under 5 minutes to fix with our kit. Our trails are well-maintained, but nature happens!`,
+
+        'discount': `We offer several ways to save:
+
+• <strong>Weekly rates</strong> save up to 30% vs daily
+• <strong>Group bookings</strong> of 4+ bikes get 10% off
+• <strong>Photo contest</strong> — share with #TrailRideAdventures for a chance to win a free weekend rental
+• Follow us on Instagram for seasonal promo codes!
+
+Tours also have group pricing that gets cheaper per person with larger groups.`,
+
+        'contact': `You can reach us anytime:
+
+📞 <strong>Phone:</strong> (555) 123-RIDE
+✉️ <strong>Email:</strong> hello@trailride.com
+📍 <strong>Visit:</strong> 123 Bike Lane, City Center
+
+Or just keep chatting here — I'm available 24/7 to help with bookings, recommendations, or any questions!`,
+
+        'default': `That's a great question! I'd recommend checking our FAQ section above, or if you'd like to speak with a human, call us at <strong>(555) 123-RIDE</strong> or email <strong>hello@trailride.com</strong>.
+
+You can also browse our bike catalog, guided tours, or start a booking right here on the site. What would you like to explore?`
+    };
+
+    function generateBotReply(userText) {
+        const lower = userText.toLowerCase();
+        
+        // Show typing indicator
+        showTypingIndicator();
+        
+        // Determine response based on keywords
+        let responseKey = 'default';
+        
+        if (lower.match(/bike|rental|fleet|type|ride/)) responseKey = 'bike';
+        else if (lower.match(/cost|price|much\s*\$|how\s+much|fee/)) responseKey = 'cost';
+        else if (lower.match(/book|reserve|availability/)) responseKey = 'book';
+        else if (lower.match(/advance|ahead|early|reservation/)) responseKey = 'advance';
+        else if (lower.match(/hour|open|close|time|when/)) responseKey = 'hour';
+        else if (lower.match(/tour|guide|guided/)) responseKey = 'tour';
+        else if (lower.match(/rain|weather|cancel/)) responseKey = 'rain';
+        else if (lower.match(/insurance|cover|damage|theft/)) responseKey = 'insurance';
+        else if (lower.match(/helmet|safety|gear/)) responseKey = 'helmet';
+        else if (lower.match(/age|kid|child|teen|old/)) responseKey = 'age';
+        else if (lower.match(/location|station|where|address|find/)) responseKey = 'location';
+        else if (lower.match(/return|drop|late/)) responseKey = 'return';
+        else if (lower.match(/flat|tire|puncture|break/)) responseKey = 'flat';
+        else if (lower.match(/discount|deal|save|cheap|offer|promo/)) responseKey = 'discount';
+        else if (lower.match(/contact|call|email|phone|reach/)) responseKey = 'contact';
+        
+        // Simulate typing delay based on message length
+        const delay = Math.min(1500, 800 + botResponses[responseKey].length * 8);
+        
+        setTimeout(() => {
+            removeTypingIndicator();
+            sendBotMessage(botResponses[responseKey]);
+            
+            // Show badge if chat is closed
+            if (!chatOpen) {
+                badgeCount++;
+                chatBadge.textContent = badgeCount;
+                chatBadge.style.display = 'flex';
+            }
+        }, delay);
+    }
+
     console.log('TrailRide initialized successfully!');
 });

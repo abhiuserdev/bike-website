@@ -1043,6 +1043,48 @@
         </div>
     </footer>
 
+    <!-- Chat Widget -->
+    <div class="chat-widget" id="chatWidget">
+        <div class="chat-panel" id="chatPanel">
+            <div class="chat-header">
+                <div class="chat-header-info">
+                    <div class="chat-avatar">
+                        <i class="fas fa-bicycle"></i>
+                    </div>
+                    <div>
+                        <h4>TrailRide Support</h4>
+                        <span class="chat-status"><i class="fas fa-circle"></i> Online</span>
+                    </div>
+                </div>
+                <button class="chat-close" id="chatClose"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="chat-message bot">
+                    <div class="chat-bubble">
+                        <p>Hey there! 👋 Welcome to TrailRide. How can we help you find your perfect ride today?</p>
+                    </div>
+                    <span class="chat-time">Just now</span>
+                </div>
+            </div>
+            <div class="chat-quick-replies" id="chatQuickReplies">
+                <button class="quick-reply" data-question="What bikes do you have?">What bikes do you have?</button>
+                <button class="quick-reply" data-question="How much does it cost?">How much does it cost?</button>
+                <button class="quick-reply" data-question="Do I need to book in advance?">Do I need to book in advance?</button>
+                <button class="quick-reply" data-question="What are your hours?">What are your hours?</button>
+                <button class="quick-reply" data-question="Do you offer tours?">Do you offer tours?</button>
+                <button class="quick-reply" data-question="What if it rains?">What if it rains?</button>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="chatInput" placeholder="Type your message..." autocomplete="off">
+                <button id="chatSend"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+        <button class="chat-toggle" id="chatToggle">
+            <i class="fas fa-comment-dots"></i>
+            <span class="chat-badge" id="chatBadge">1</span>
+        </button>
+    </div>
+
     <script src="js/main.js"></script>
 </body>
 </html>
